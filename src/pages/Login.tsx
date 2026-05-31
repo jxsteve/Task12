@@ -5,7 +5,6 @@ import { useAuth, type Role } from "../context/AuthContext";
 interface RoleOption {
   value: Role;
   label: string;
-  emoji: string;
   description: string;
 }
 
@@ -13,19 +12,16 @@ const ROLES: RoleOption[] = [
   {
     value: "Admin",
     label: "Admin",
-    emoji: "🛡️",
     description: "Full control over members, security, and workspace settings.",
   },
   {
     value: "Editor",
     label: "Editor",
-    emoji: "✏️",
     description: "Create, edit, and publish content across the workspace.",
   },
   {
     value: "Viewer",
     label: "Viewer",
-    emoji: "👁️",
     description: "Browse pages and shared reports. Read-only.",
   },
 ];
@@ -52,9 +48,7 @@ export default function Login() {
       <div className="login-card fade-in">
         <div className="login-logo">MyDashboard</div>
         <h1 className="login-title">Welcome to your workspace</h1>
-        <p className="login-sub">
-          Pick a role and a name. No password — this is a demo.
-        </p>
+        <p className="login-sub">Pick a role and a name. No password — this is a demo.</p>
 
         <form onSubmit={onSubmit} noValidate>
           <div className="field">
@@ -73,12 +67,7 @@ export default function Login() {
                 if (error) setError("");
               }}
             />
-            {error && (
-              <div className="error-msg">
-                <span>⚠</span>
-                {error}
-              </div>
-            )}
+            {error && <div className="error-msg">{error}</div>}
           </div>
 
           <div className="field">
@@ -92,19 +81,14 @@ export default function Login() {
                     key={r.value}
                     role="radio"
                     aria-checked={selected}
-                    className={`radio-btn ${
-                      selected ? "radio-btn--selected" : ""
-                    }`}
+                    className={`radio-btn ${selected ? "radio-btn--selected" : ""}`}
                     onClick={() => setRole(r.value)}
                   >
                     <span className="radio-indicator" aria-hidden>
                       {selected && <span className="radio-dot" />}
                     </span>
                     <span className="radio-content">
-                      <span className="radio-label">
-                        <span>{r.emoji}</span>
-                        {r.label}
-                      </span>
+                      <span className="radio-label">{r.label}</span>
                       <span className="radio-desc">{r.description}</span>
                     </span>
                   </button>
@@ -114,7 +98,7 @@ export default function Login() {
           </div>
 
           <button type="submit" className="btn-submit">
-            Continue →
+            Continue
           </button>
         </form>
       </div>

@@ -4,7 +4,6 @@ interface Toggle {
   key: string;
   label: string;
   description: string;
-  icon: string;
   value: boolean;
 }
 
@@ -14,28 +13,24 @@ export default function Settings() {
       key: "twofa",
       label: "Require two-step verification",
       description: "Adds a second factor for workspace members.",
-      icon: "🔒",
       value: true,
     },
     {
       key: "sso",
       label: "Mandate SSO for new members",
       description: "Requires new invitees to sign in using identity provider.",
-      icon: "🔑",
       value: false,
     },
     {
       key: "invites",
       label: "Allow open invitations",
       description: "Allows both editors and admins to invite members.",
-      icon: "✉️",
       value: false,
     },
     {
       key: "exports",
       label: "Permit data exports",
       description: "Enables members to download workspace data.",
-      icon: "⬇️",
       value: true,
     },
   ]);
@@ -53,7 +48,7 @@ export default function Settings() {
         <p className="welcome-sub">Configure workspace security, access policies, and data preferences.</p>
       </div>
 
-      <div className="simple-card mb-24">
+      <div className="simple-card" style={{ marginBottom: 24 }}>
         <div className="card-header">
           <h2 className="card-title">Security &amp; Membership</h2>
           <p className="card-sub">Global configuration options for this workspace.</p>
@@ -67,12 +62,9 @@ export default function Settings() {
               onClick={() => toggleSetting(t.key)}
               style={{ padding: "12px 20px" }}
             >
-              <div className="simple-row__left">
-                <span className="simple-row__icon">{t.icon}</span>
-                <div>
-                  <div style={{ fontWeight: 600 }}>{t.label}</div>
-                  <div className="caption muted" style={{ marginTop: 2 }}>{t.description}</div>
-                </div>
+              <div>
+                <div style={{ fontWeight: 600 }}>{t.label}</div>
+                <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 2 }}>{t.description}</div>
               </div>
               <button
                 className={`switch ${t.value ? "switch--on" : ""}`}
@@ -86,7 +78,7 @@ export default function Settings() {
         </div>
       </div>
 
-      <div className="simple-card" style={{ borderColor: "rgba(239, 68, 68, 0.2)" }}>
+      <div className="simple-card" style={{ borderColor: "rgba(209, 52, 56, 0.2)" }}>
         <div className="card-header">
           <h2 className="card-title" style={{ color: "var(--accent-red)" }}>Danger Zone</h2>
           <p className="card-sub">Irreversible workspace administration actions.</p>
@@ -94,17 +86,13 @@ export default function Settings() {
         <div className="flex-between">
           <div>
             <div style={{ fontWeight: 600 }}>Reset Workspace</div>
-            <div className="caption muted" style={{ marginTop: 2 }}>
+            <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 2 }}>
               Permanently remove all members, draft data, and settings.
             </div>
           </div>
           <button
             className="btn-action"
-            style={{
-              color: "white",
-              backgroundColor: "var(--accent-red)",
-              borderColor: "var(--accent-red)",
-            }}
+            style={{ color: "white", backgroundColor: "var(--accent-red)", borderColor: "var(--accent-red)" }}
             onClick={() => alert("Workspace reset initiated.")}
           >
             Reset

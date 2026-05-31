@@ -2,7 +2,6 @@ import { useAuth } from "../context/AuthContext";
 import type { Role } from "../context/AuthContext";
 
 interface ControlRow {
-  icon: string;
   label: string;
   value?: string;
 }
@@ -18,27 +17,27 @@ const PANEL_CONFIGS: Record<Role, PanelConfig> = {
     title: "Admin Controls",
     subtitle: "Manage your application settings, users, and system activity.",
     rows: [
-      { icon: "👥", label: "Manage Users" },
-      { icon: "📋", label: "View Logs" },
-      { icon: "⚙️", label: "System Settings" },
+      { label: "Manage Users" },
+      { label: "View Logs" },
+      { label: "System Settings" },
     ],
   },
   Editor: {
     title: "Editor Controls",
     subtitle: "Create, edit, and publish content across the workspace.",
     rows: [
-      { icon: "📝", label: "Create New Draft" },
-      { icon: "🔍", label: "View Pending Reviews" },
-      { icon: "📊", label: "Analytics Overview" },
+      { label: "Create New Draft" },
+      { label: "View Pending Reviews" },
+      { label: "Analytics Overview" },
     ],
   },
   Viewer: {
     title: "Viewer Controls",
     subtitle: "Browse pages and shared reports. Read-only.",
     rows: [
-      { icon: "📈", label: "Performance Summary" },
-      { icon: "💬", label: "Customer Feedback Digest" },
-      { icon: "⚡", label: "Content Velocity Overview" },
+      { label: "Performance Summary" },
+      { label: "Customer Feedback Digest" },
+      { label: "Content Velocity Overview" },
     ],
   },
 };
@@ -52,9 +51,7 @@ export default function Dashboard() {
   return (
     <div className="fade-in">
       <div className="welcome-section">
-        <h1 className="welcome-title">
-          Welcome, {account.username} 👋
-        </h1>
+        <h1 className="welcome-title">Welcome, {account.username}</h1>
         <p className="welcome-sub">
           You are signed in as <strong>{account.role}</strong>. Here's your personalised workspace.
         </p>
@@ -69,10 +66,7 @@ export default function Dashboard() {
         <div className="simple-rows">
           {config.rows.map((row, index) => (
             <div key={index} className="simple-row">
-              <div className="simple-row__left">
-                <span className="simple-row__icon">{row.icon}</span>
-                <span>{row.label}</span>
-              </div>
+              <span>{row.label}</span>
               {row.value && <span className="simple-row__value">{row.value}</span>}
             </div>
           ))}

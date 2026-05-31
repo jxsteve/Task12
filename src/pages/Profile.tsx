@@ -5,11 +5,11 @@ export default function Profile() {
   if (!account) return null;
 
   const profileData = [
-    { icon: "👤", label: "Username", value: account.username },
-    { icon: "◐", label: "Role", value: account.role },
-    { icon: "⌂", label: "Workspace", value: "Personal Workspace" },
-    { icon: "⌚", label: "Time zone", value: "Africa/Lagos · GMT+1" },
-    { icon: "✉", label: "Email notifications", value: "Enabled" },
+    { label: "Username", value: account.username },
+    { label: "Role", value: account.role },
+    { label: "Workspace", value: "Personal Workspace" },
+    { label: "Time zone", value: "Africa/Lagos · GMT+1" },
+    { label: "Email notifications", value: "Enabled" },
   ];
 
   return (
@@ -28,10 +28,7 @@ export default function Profile() {
         <div className="simple-rows">
           {profileData.map((item, index) => (
             <div key={index} className="simple-row" style={{ cursor: "default" }}>
-              <div className="simple-row__left">
-                <span className="simple-row__icon">{item.icon}</span>
-                <span>{item.label}</span>
-              </div>
+              <span>{item.label}</span>
               <span className="simple-row__value" style={{ fontWeight: 600, color: "var(--text-main)" }}>
                 {item.value}
               </span>
