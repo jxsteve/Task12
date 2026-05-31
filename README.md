@@ -1,15 +1,7 @@
 # Workspace — Notion edition
 
-Multi-page React + TypeScript app with role-gated routes. Notion design system, light mode.
+Multi-page React + TypeScript app with role-gated routes.
 
-## Run
-
-```bash
-npm install
-npm run dev
-```
-
-Open <http://localhost:5173>. Pick a role on `/login` and you're in.
 
 ## Routes
 
